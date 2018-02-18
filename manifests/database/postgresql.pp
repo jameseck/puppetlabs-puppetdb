@@ -28,12 +28,12 @@ class puppetdb::database::postgresql(
       database => $database_name,
       require  => Postgresql::Server::Db[$database_name],
     }
-  }
 
-  # create the puppetdb database
-  postgresql::server::db { $database_name:
-    user     => $database_username,
-    password => $database_password,
-    grant    => 'all',
+    # create the puppetdb database
+    postgresql::server::db { $database_name:
+      user     => $database_username,
+      password => $database_password,
+      grant    => 'all',
+    }
   }
 }
